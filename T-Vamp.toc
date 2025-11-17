@@ -4,6 +4,7 @@
 ## X-Category: Interface Enhancements
 ## X-Date: 2025-11-17
 ## X-Website:
-## Version: 1.0
+## Author: Mikhail Palagin (Wht Mst) / Original author MarcelineVQ
+## Version: 1.18
 
 T-Vamp.lua
