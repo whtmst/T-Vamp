@@ -1,9 +1,0 @@
-## Interface: 11200
-## Title: Vamper
-## Notes: Track Vampirism gains
-## X-Category: Interface Enhancements
-## X-Date: 2025-03-26
-## X-Website:
-## Version: 1.0
-
-Vamper.lua

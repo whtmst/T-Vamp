@@ -1,0 +1,9 @@
+## Interface: 11200
+## Title: [ |cFFFFFFFFWM|r ] |cFF11A6ECT-Vamp|r |cFF7FFF7Fv1.18|r
+## Notes: |cFF11A6ECT-Vamp|r - Track Vampirism gains. Made for |cff00ff00Turtle WoW|r with love by Wht Mst.
+## X-Category: Interface Enhancements
+## X-Date: 2025-11-17
+## X-Website:
+## Version: 1.0
+
+T-Vamp.lua
