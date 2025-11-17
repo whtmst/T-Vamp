@@ -6,6 +6,7 @@ T_Vamp.vamp_stat_total = 0
 T_Vamp.vamp_stats = {}
 T_Vamp.tooltip = CreateFrame("GameTooltip", "TVampToolTip", nil, "GameTooltipTemplate")
 T_Vamp.tooltip:SetOwner(WorldFrame, "ANCHOR_NONE")
+T_Vamp.firstScanDone = false -- Флаг первого сканирования
 
 -- Регистрируем команду
 SLASH_TVAMP1 = "/tvamp"
@@ -24,7 +25,9 @@ T_Vamp:SetScript("OnEvent", function ()
 end)
 
 function T_Vamp:ShowVampStats()
+    -- ВСЕГДА делаем сканирование при использовании команды
     self:CollectVampStat()
+    self.firstScanDone = true
     
     local vamp_stats_string = ""
     if table.getn(self.vamp_stats) > 0 then
@@ -88,11 +91,18 @@ function T_Vamp:PLAYER_REGEN_DISABLED()
   self.in_combat = GetTime()
   self.running_total = 0
   self.last_health = UnitHealth("player")
+  -- При начале боя делаем сканирование статов
+  self:CollectVampStat()
+  self.firstScanDone = true
 end
 
 function T_Vamp:PLAYER_ENTERING_WORLD()
-  if UnitAffectingCombat("player") then self:PLAYER_REGEN_DISABLED() end
-  self:CollectVampStat()
+  if UnitAffectingCombat("player") then 
+      self:PLAYER_REGEN_DISABLED() 
+  else
+      -- При входе в мир сбрасываем флаг, чтобы первая команда /tvamp сработала
+      self.firstScanDone = false
+  end
 end
 
 -- Сообщение, отправляемое в аддон MikScrollingBattleText (MSBT)
